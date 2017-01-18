@@ -46,14 +46,9 @@ package screens
 			this.layout = new VerticalLayout(); //We are going to use a layout where items will be stacked verticallly
 
 			/*
-			 We use an ImageLoader when we want to display a graphic asset, it can be from a web server or from the local filesystem.
-			 */
-			var hourIcon:ImageLoader = new ImageLoader();
-			hourIcon.source = "assets/icons/hour.png";
-			hourIcon.width = hourIcon.height = 40;
+			 We create a button and customize its look by setting its icon from a helper function that returns
+			 a new ImageLoader. The helper function requires one String parameter which is the file path of the icon.
 
-			/*
-			 We create a button and customize its look by setting its icon from the previous ImageLoader.
 			 We also set its label and assigned an specific style from the theme.
 
 			 The layoutData value means that we want it to fit 100% horizontally and 25% vertically in the screen.
@@ -66,7 +61,7 @@ package screens
 				goNextScreen("Past Hour", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
 			})
 			button1.label = "Past Hour";
-			button1.defaultIcon = hourIcon;
+			button1.defaultIcon = generateIcon("assets/icons/hour.png");
 			button1.styleNameList.add("horizontal-button");
 			button1.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button1);
@@ -74,17 +69,13 @@ package screens
 			/*
 			 Button 2 block
 			 */
-			var dayIcon:ImageLoader = new ImageLoader();
-			dayIcon.source = "assets/icons/day.png";
-			dayIcon.width = dayIcon.height = 40;
-
 			var button2:Button = new Button();
 			button2.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Day", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson");
 			})
 			button2.label = "Past Day";
-			button2.defaultIcon = dayIcon;
+			button2.defaultIcon = generateIcon("assets/icons/day.png");
 			button2.styleNameList.add("horizontal-button");
 			button2.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button2);
@@ -92,10 +83,6 @@ package screens
 			/*
 			 Button 3 block
 			 */
-			var weekIcon:ImageLoader = new ImageLoader();
-			weekIcon.source = "assets/icons/week.png";
-			weekIcon.width = weekIcon.height = 40;
-
 			var button3:Button = new Button();
 			button3.addEventListener(Event.TRIGGERED, function ():void
 			{
@@ -103,29 +90,37 @@ package screens
 			})
 			button3.label = "Past Week";
 			button3.styleNameList.add("horizontal-button");
-			button3.defaultIcon = weekIcon;
+			button3.defaultIcon = generateIcon("assets/icons/week.png");
 			button3.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button3);
 
 			/*
 			 Button 4 block
 			 */
-			var monthIcon:ImageLoader = new ImageLoader();
-			monthIcon.source = "assets/icons/month.png";
-			monthIcon.width = monthIcon.height = 40;
-
 			var button4:Button = new Button();
 			button4.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Month", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson");
 			})
 			button4.label = "Past Month";
-			button4.defaultIcon = monthIcon;
+			button4.defaultIcon = generateIcon("assets/icons/month.png");
 			button4.styleNameList.add("horizontal-button");
 			button4.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button4);
 
 			System.gc(); //This function will call the garbage collector everytime we come back to the main menu
+		}
+
+		/*
+		This helper function will create and return an ImageLoader containing the icon specified in the path parameter.
+		This is useful for avoiding the repetition of identical code.
+		 */
+		private function generateIcon(path:String):ImageLoader
+		{
+			var tempIcon:ImageLoader = new ImageLoader();
+			tempIcon.source = path;
+			tempIcon.width = tempIcon.height = 40;
+			return tempIcon;
 		}
 
 		/*

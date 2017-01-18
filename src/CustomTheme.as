@@ -61,7 +61,6 @@ package
 		{
 			this.getStyleProviderForClass(Button).setFunctionForStyleName("horizontal-button", this.setHorizontalButtonStyles);
 			this.getStyleProviderForClass(Button).setFunctionForStyleName("back-button", this.setBackButtonStyles);
-			this.getStyleProviderForClass(Button).setFunctionForStyleName("header-button", this.setHeaderButtonStyles);
 
 			this.getStyleProviderForClass(Header).defaultStyleFunction = this.setHeaderStyles;
 			this.getStyleProviderForClass(Label).defaultStyleFunction = this.setLabelStyles;
@@ -72,16 +71,6 @@ package
 		//-------------------------
 		// Button
 		//-------------------------
-
-
-		private function setHeaderButtonStyles(button:Button):void
-		{
-			var quad:Quad = new Quad(45, 45, 0xFFFFFF);
-			quad.alpha = .3;
-
-			button.downSkin = quad;
-			button.height = button.width = 45;
-		}
 
 		private function setBackButtonStyles(button:Button):void
 		{

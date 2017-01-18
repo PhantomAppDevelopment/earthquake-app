@@ -91,10 +91,10 @@ package
 				_magnitudeLabel.text = String(magnitude);
 
 				/*
-				 We convert the UNIX timestamp received from the web API into a readable format.
+				 We convert the UNIX timestamp received from the web API into a human readable format.
 				 */
 				var date:Date = new Date(Number(_data.properties.time));
-				_quakeLabel.text = "<b>" + _data.properties.place + "</b>" + "\n" + date.toLocaleDateString();
+				_quakeLabel.text = "<b>" + _data.properties.place + "</b>" + "\n" + date.toLocaleDateString() + " @ " + date.toLocaleTimeString();
 			} else {
 				/*
 				 In case there's no new data we set the labels values to an empty string, this is to avoid runtime errors.

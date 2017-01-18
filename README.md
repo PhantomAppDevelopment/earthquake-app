@@ -18,7 +18,7 @@ Some of the techniques covered are:
   - Custom ItemRenderer
   - Custom font
 
-To compile this application you require AIR 23 or greater, FeathersUI 3.1.1 and Starling 2.1.
+To compile this application you require AIR 23 or greater, FeathersUI 3.1.2 and Starling 2.1.
 
 [![Watch on Youtube](http://i.imgur.com/KausbJB.png)](https://www.youtube.com/watch?v=T14a9QIm8Ts)
 

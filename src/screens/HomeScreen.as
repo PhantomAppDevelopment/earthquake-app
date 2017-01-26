@@ -54,7 +54,7 @@ package screens
 			 When the button gets TRIGGERED (clicked/pressed/tapped) we are going to call a custom function named goNextScreen().
 			 This function takes 2 parameters. A String containing the title and a String containing an URL.
 			 */
-			var button1:Button = generateMenuButton("Past HOur", "assets/icons/hour.png");
+			var button1:Button = generateMenuButton("Past Hour", "assets/icons/hour.png");
 			button1.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Hour", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");

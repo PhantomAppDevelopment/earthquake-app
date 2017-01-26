@@ -1,4 +1,4 @@
-# Earthquake App 1.0.0
+# Earthquake App 1.0.1
 
 Earthquake App is a mobile application developed with Starling Framework and FeathersUI. It showcases how to design and develop a simple yet beautiful app while teaching mobile specific techniques.
 This application has been heavily commented and it's recommended for developers who are new in developing applications with Starling Framework and Feathers UI.

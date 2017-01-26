@@ -46,81 +46,73 @@ package screens
 			this.layout = new VerticalLayout(); //We are going to use a layout where items will be stacked verticallly
 
 			/*
-			 We create a button and customize its look by setting its icon from a helper function that returns
-			 a new ImageLoader. The helper function requires one String parameter which is the file path of the icon.
+			 We create 4 identical buttons using a helper function that will return us a new Button with predefined properties.
+			 By using the helper function we save several lines of code and we only need to set individual EventListeners.
 
-			 We also set its label and assigned an specific style from the theme.
+			 Scroll to the bottom to see how the helper function uses the parameters and creates our new buttons.
 
-			 The layoutData value means that we want it to fit 100% horizontally and 25% vertically in the screen.
 			 When the button gets TRIGGERED (clicked/pressed/tapped) we are going to call a custom function named goNextScreen().
 			 This function takes 2 parameters. A String containing the title and a String containing an URL.
 			 */
-			var button1:Button = new Button();
+			var button1:Button = generateMenuButton("Past HOur", "assets/icons/hour.png");
 			button1.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Hour", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
 			})
-			button1.label = "Past Hour";
-			button1.defaultIcon = generateIcon("assets/icons/hour.png");
-			button1.styleNameList.add("horizontal-button");
-			button1.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button1);
 
 			/*
 			 Button 2 block
 			 */
-			var button2:Button = new Button();
+			var button2:Button = generateMenuButton("Past Day", "assets/icons/day.png")
 			button2.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Day", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson");
 			})
-			button2.label = "Past Day";
-			button2.defaultIcon = generateIcon("assets/icons/day.png");
-			button2.styleNameList.add("horizontal-button");
-			button2.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button2);
 
 			/*
 			 Button 3 block
 			 */
-			var button3:Button = new Button();
+			var button3:Button = generateMenuButton("Past Week", "assets/icons/week.png")
 			button3.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Week", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson");
 			})
-			button3.label = "Past Week";
-			button3.styleNameList.add("horizontal-button");
-			button3.defaultIcon = generateIcon("assets/icons/week.png");
-			button3.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button3);
 
 			/*
 			 Button 4 block
 			 */
-			var button4:Button = new Button();
+			var button4:Button = generateMenuButton("Past Month", "assets/icons/month.png");
 			button4.addEventListener(Event.TRIGGERED, function ():void
 			{
 				goNextScreen("Past Month", "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson");
 			})
-			button4.label = "Past Month";
-			button4.defaultIcon = generateIcon("assets/icons/month.png");
-			button4.styleNameList.add("horizontal-button");
-			button4.layoutData = new VerticalLayoutData(100, 25);
 			this.addChild(button4);
 
 			System.gc(); //This function will call the garbage collector everytime we come back to the main menu
 		}
 
 		/*
-		This helper function will create and return an ImageLoader containing the icon specified in the path parameter.
-		This is useful for avoiding the repetition of identical code.
+		 This helper function will create and return a Button and an ImageLoader as its default icon.
+		 This function requires 2 parameters, a desired label text for the button and a file path for its default icon.
+		 This kind of function is useful for avoiding the repetition of identical code.
+
+		 The layoutData value means that we want it to fit 100% horizontally and 25% vertically in the screen.
 		 */
-		private function generateIcon(path:String):ImageLoader
+		private function generateMenuButton(buttonLabel:String, iconPath:String):Button
 		{
 			var tempIcon:ImageLoader = new ImageLoader();
-			tempIcon.source = path;
+			tempIcon.source = iconPath;
 			tempIcon.width = tempIcon.height = 40;
-			return tempIcon;
+
+			var tempButton:Button = new Button();
+			tempButton.label = buttonLabel;
+			tempButton.defaultIcon = tempIcon;
+			tempButton.styleNameList.add("horizontal-button");
+			tempButton.layoutData = new VerticalLayoutData(100, 25);
+			return tempButton;
 		}
 
 		/*

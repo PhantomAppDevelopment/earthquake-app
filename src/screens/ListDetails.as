@@ -44,7 +44,7 @@ package screens
 
 			/*
 			 The header title for this screen is dynamic, it is composed by 2 Strings:
-			 "Earthakes, " and the title that was passed in the function showNextScreen()
+			 "Earthquakes, " and the title that was passed in the function showNextScreen()
 			 */
 			this.title = "All Earthquakes, " + _data.selectedLabel;
 			this.layout = new VerticalLayout();

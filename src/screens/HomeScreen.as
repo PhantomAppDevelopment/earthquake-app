@@ -43,7 +43,7 @@ package screens
 			super.initialize();
 
 			this.title = "Earthquakes"; //The title that will appear in the header
-			this.layout = new VerticalLayout(); //We are going to use a layout where items will be stacked verticallly
+			this.layout = new VerticalLayout(); //We are going to use a layout where items will be stacked vertically
 
 			/*
 			 We create 4 identical buttons using a helper function that will return us a new Button with predefined properties.

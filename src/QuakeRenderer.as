@@ -5,6 +5,7 @@ package
 	import feathers.controls.renderers.LayoutGroupListItemRenderer;
 	import feathers.layout.AnchorLayout;
 	import feathers.layout.AnchorLayoutData;
+	import feathers.utils.touch.DelayedDownTouchToState;
 	import feathers.utils.touch.TapToSelect;
 
 	import starling.display.Quad;
@@ -16,11 +17,30 @@ package
 		private var _magnitudeLabel:Label;
 		private var _circle:ImageLoader;
 		private var _select:TapToSelect;
+		private var _delay:DelayedDownTouchToState;
 
 		public function QuakeRenderer()
 		{
 			super();
 			this._select = new TapToSelect(this); //This helper allows our ItemRenderer to dispatch the starling.events.Event.CHANGE event.
+			this._delay = new DelayedDownTouchToState(this, changeState); //This helper allows our TtemRenderer to have a down state.
+		}
+
+		/*
+		 Implementing a down state is optional but it is recommended because it gives the user a feedback that what they are touching/holding is interactive.
+		 For this ItemRenderer we are only manipulating the background from a light gray to a dark one.
+		 */
+		private function changeState(currentState:String):void
+		{
+			if (this._data) {
+				if (currentState == "up") {
+					this.backgroundSkin = new Quad(3, 3, 0x455A64);
+				}
+				else if (currentState == "down") {
+					this.backgroundSkin = new Quad(3, 3, 0x263238);
+				}
+
+			}
 		}
 
 		/*

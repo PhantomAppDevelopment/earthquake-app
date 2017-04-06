@@ -10,6 +10,7 @@ package
 	import feathers.core.FeathersControl;
 	import feathers.core.ITextRenderer;
 	import feathers.layout.HorizontalAlign;
+	import feathers.layout.RelativePosition;
 	import feathers.layout.VerticalAlign;
 	import feathers.themes.StyleNameFunctionTheme;
 
@@ -91,7 +92,7 @@ package
 		{
 			button.defaultSkin = new Quad(3, 3, 0x455A64);
 			button.downSkin = new Quad(3, 3, 0x263238);
-			button.iconPosition = Button.ICON_POSITION_LEFT;
+			button.iconPosition = RelativePosition.LEFT;
 			button.horizontalAlign = HorizontalAlign.LEFT;
 			button.verticalAlign = VerticalAlign.MIDDLE;
 			button.paddingLeft = 20;

@@ -138,7 +138,7 @@ package screens
 		/*
 		 The goBack function is rather simple. It cleans out variables and properties that are not going to be used anymore.
 		 */
-		private function goBack(event:starling.events.Event):void
+		private function goBack():void
 		{
 			_data.dataProvider = null;
 			_data.selectedIndex = null;
